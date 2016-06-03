@@ -30,3 +30,21 @@ code = {
 	"since the date and time specified in If-Modified-Since field."
 	}
 
+url = input("Enter URL")
+try :
+	link = urllib.request.urlopen(url)
+	message = link.getcode()
+	for key in code.keys():
+		if message == key :
+			print (code[key])
+			break
+	else:
+		print("Unidentified code returned.")
+except urllib.error.HTTPError as err :
+	for key in code.keys():
+		if err.code == key :
+			print(code[key])
+			break
+	else:
+		raise
+
