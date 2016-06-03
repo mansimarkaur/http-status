@@ -7,9 +7,6 @@ status = Flask(__name__)
 def main() :
 	return render_template("index.html")
 
-if __name__ == "__main__" :
-	status.run()
-
 @status.route("/func", methods = ['POST'])
 def func() :
 	code = {
@@ -48,14 +45,14 @@ def func() :
 		for key in code.keys():
 			if message == key :
 				return render_template("index.html", text = code[key])
-				break
-		else:
-			return render_template("index.html", text = "Unidentified code returned.")
+		#else:
+		#	return render_template("index.html", text = "Unidentified code returned.")
 	except urllib.error.HTTPError as err :
 		for key in code.keys():
 			if err.code == key :
 				return render_template("index.html", text = code[key])
-				break
-		else:
-			raise
+		#else:
+		#	raise
 
+if __name__ == "__main__" :
+	status.run()
