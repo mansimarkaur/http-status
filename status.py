@@ -10,8 +10,8 @@ def main() :
 if __name__ == "__main__" :
 	status.run()
 
-@status.route("/status", methods = ['POST'])
-def status() :
+@status.route("/func", methods = ['POST'])
+def func() :
 	code = {
 		"None" : "Input a valid HTTP URL",
 		200 : "OK",
@@ -47,14 +47,14 @@ def status() :
 		message = link.getcode()
 		for key in code.keys():
 			if message == key :
-				return json.dumps code[key])
+				return render_template("index.html", text = code[key])
 				break
 		else:
-			print("Unidentified code returned.")
+			return render_template("index.html", text = "Unidentified code returned.")
 	except urllib.error.HTTPError as err :
 		for key in code.keys():
 			if err.code == key :
-				print(code[key])
+				return render_template("index.html", text = code[key])
 				break
 		else:
 			raise
