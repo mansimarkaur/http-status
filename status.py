@@ -51,8 +51,8 @@ def func() :
 		for key in code.keys():
 			if err.code == key :
 				return render_template("index.html", text = code[key])
-		#else:
-		#	raise
+		else:
+			raise
 
 if __name__ == "__main__" :
 	status.run()
