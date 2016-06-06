@@ -1,5 +1,4 @@
-import urllib.request
-import urllib.error
+import requests
 from flask import Flask, render_template, request, json
 status = Flask(__name__)
 
@@ -40,14 +39,14 @@ def func() :
 
 	_url = request.form['inputName']
 	try :
-		link = urllib.request.urlopen(_url)
-		message = link.getcode()
+		link = requests.get(_url)
+		message = link.status_code
 		for key in code.keys():
 			if message == key :
 				return render_template("index.html", text = code[key])
 		#else:
 		#	return render_template("index.html", text = "Unidentified code returned.")
-	except urllib.error.HTTPError as err :
+	except requests.exceptions.HTTPError as err:
 		for key in code.keys():
 			if err.code == key :
 				return render_template("index.html", text = code[key])
