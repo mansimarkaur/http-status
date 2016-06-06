@@ -3,5 +3,3 @@ This Python application based on Flask displays the http status code response fo
 
 ## Screenshot- 
 ![Screenshot for http-status](/static/img/screenshot.jpg?raw=true "Screenshot for http-status")
-
-## How to run the server locally
