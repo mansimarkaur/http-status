@@ -38,20 +38,25 @@ def func() :
 		}
 
 	_url = request.form['inputName']
+	if _url[:4] != "http" :
+		return render_template("index.html", text = "Invalid URL")
 	try :
-		link = requests.get(_url)
+		try:
+			link = requests.get(_url)
+		except Exception, e:
+			return render_template("index.html", text = "The host "+_url+"couldn't be resolved")
 		message = link.status_code
 		for key in code.keys():
 			if message == key :
 				return render_template("index.html", text = code[key])
 		#else:
 		#	return render_template("index.html", text = "Unidentified code returned.")
-	except requests.exceptions.HTTPError as err:
-		for key in code.keys():
-			if err.code == key :
-				return render_template("index.html", text = code[key])
-		else:
-			raise
+	except: #requests.exceptions.HTTPError as err:
+		#for key in code.keys():
+			#if err.code == key :
+		return render_template("index.html", link.raise_for_status())
+		#else:
+			#raise
 
 if __name__ == "__main__" :
 	status.run()
