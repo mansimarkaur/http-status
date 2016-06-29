@@ -24,6 +24,10 @@ body {
   line-height: 40px;
 }
 
+#allLinks{
+  width : 6%;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;

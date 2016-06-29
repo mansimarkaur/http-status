@@ -1,4 +1,5 @@
 import requests
+import urllib2
 from flask import Flask, render_template, request, json
 from bs4 import BeautifulSoup
 status = Flask(__name__)
@@ -40,29 +41,55 @@ def func() :
 		"since the date and time specified in If-Modified-Since field."
 		}
 	#gets the URL entered in the form vis method POST 
+	global _url
 	_url = request.form['inputName']
 	#invalid URL entered
 	if _url[:4] != "http" :
 		return render_template("index.html", text = "Invalid URL")
-	try:
-		link = requests.get(_url)
-	except Exception, e:
-		return render_template("index.html", text = "The host "+_url+" couldn't be resolved")
-	message = link.status_code
-	for key in code.keys():
-		if message == key :
-			return render_template("index.html", text = code[key])
+	check = bool(request.form['all_links'])
+	return hyperlinks(check)
+	# try:
+	# 	link = requests.get(_url)
+	# except Exception, e:
+	# 	return render_template("index.html", text = "The host "+_url+" couldn't be resolved")
+	# message = link.status_code
+	# for key in code.keys():
+	# 	if message == key :
+	# 		show[]
+	# 		return render_template("index.html", text = code[key])
 
 
-@status.route()
-def hyperlinks() :
-	all_links = soup.find_all("a")
+def hyperlinks(check = False) :
 	check_links = []
-	if len(all_links) == 0 :
-		return render_template("index.html", "No hyperlinks to check") 
-	for i in all_links :
-		check_links.append(i)
-	check(check_links)
+	check_links.append(_url)
+	if check :
+		link = urllib2.urlopen(_url) #returns obj 
+		soup = BeautifulSoup(link, 'html.parser')
+		all_links = soup.find_all("a")
+	# if len(all_links) == 0 :
+	# 	return render_template("index.html", "No hyperlinks to check") 
+		for i in all_links :
+			l = i.get("href")
+			if l[:4] != "http" :
+				l = _url + l
+			check_links.append(l)
+	return check(check_links)
+
+def check(links) :
+	show = {}
+	for l in links :
+		try:
+			link = requests.get(l)
+		except Exception, e:
+			return render_template("index.html", text = "The host "+l+" couldn't be resolved")
+		message = link.status_code
+		for key in code.keys():
+			if message == key :
+				show[link] = code[key]
+	return render_template("index.html", text = show)
+
+
+
 		
 
 
