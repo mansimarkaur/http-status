@@ -1,4 +1,4 @@
-# Project Title
+# http status
 
 This Python application based on Flask displays the http status code response for a given URL.
 
