@@ -35,11 +35,6 @@ To install flask
 pip install flask
 ```
 
-To install BeautifulSoup
-
-```
-pip install bs4
-```
 
 
 
