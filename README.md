@@ -2,6 +2,8 @@
 
 This Python application based on Flask displays the http status code response for a given URL.
 
+![Screenshot for http-status](/static/img/screenshot.jpg?raw=true "Screenshot for http-status")
+
 
 ## Getting Started
 ```
@@ -11,11 +13,6 @@ python status.py
 ```
 Go to **http://localhost:5000/** in your browser
 Enter URL and get the status! :v:
-
-
-## Screenshot- 
-![Screenshot for http-status](/static/img/screenshot.jpg?raw=true "Screenshot for http-status")
-
 
 
 ### Prerequisities
