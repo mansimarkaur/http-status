@@ -4,12 +4,13 @@ This Python application based on Flask displays the http status code response fo
 
 
 ## Getting Started
-
-	git clone https://github.com/mansimarkaur/http-status
-	cd http-status
-	python status.py
-	go to http://localhost:5000/ in your browser
-	enter URL and get the status!
+```
+git clone https://github.com/mansimarkaur/http-status
+cd http-status
+python status.py
+```
+Go to **http://localhost:5000/** in your browser
+Enter URL and get the status! :v:
 
 
 ## Screenshot- 
@@ -19,21 +20,14 @@ This Python application based on Flask displays the http status code response fo
 
 ### Prerequisities
 
- See [requirements.txt](https://github.com/mansimarkaur/http-status/blob/master/requirements.txt)
-
-### Installing
-
-To install requests
+To install requirements:
 
 ```
-pip install requests
+[sudo] pip install requirements
 ```
+	 	
+If you don't have [pip](https://pip.pypa.io) installed, [this Python installation guide](http://docs.python-guide.org/en/latest/starting/installation) can guide you through the process.
 
-To install flask
-
-```
-pip install flask
-```
 
 
 
