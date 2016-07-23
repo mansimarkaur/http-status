@@ -15,7 +15,7 @@ Go to **http://localhost:5000/** in your browser
 Enter URL and get the status! :v:
 
 
-### Prerequisities
+## Prerequisities
 
 To install requirements:
 
