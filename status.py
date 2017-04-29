@@ -58,7 +58,6 @@ def func() :
 		message = link.status_code
 		for key in code.keys():
 			if message == key :
-				show[]
 				return render_template("index.html", text = code[key])
 	except :
 		return render_template("index.html", link.raise_for_status())
